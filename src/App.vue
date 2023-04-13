@@ -8,8 +8,8 @@
     <div><span style="color:red"> {{ newItem }} </span></div>
     <ul v-for="item in items" :key="item.id">
       <li>
-        <input type="checkbox" >
-        {{ item.name }}
+        <input type="checkbox" v-model="item.done" >
+        <span :class="{done: item.done}">{{ item.name }}</span>
         <button @click="removeItem(item)">X</button>
       </li>
     </ul>
@@ -26,7 +26,6 @@ export default {
     return {
       header: "April 2022 Shopping",
       newItem: '',
-      completedItem: false,
       items: [
         {id:id++, name: 'Maize Flour',completed: false},
         {id:id++, name: 'Nduma', completed: false},
@@ -55,5 +54,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.done {
+  text-decoration: line-through;
 }
 </style>
