@@ -3,6 +3,7 @@
     <h2>{{ header || 'Welcome' }}</h2>
     <div>
       <input type="text" placeholder="Add Item" v-model="newItem">
+      
       <button @click="addItem">Submit</button>
     </div>
     <div><span style="color:red"> {{ newItem }} </span></div>
@@ -10,6 +11,7 @@
       <li>
         <input type="checkbox" v-model="item.done" >
         <span :class="{done: item.done}">{{ item.name }}</span>
+        <span>{{ item.happy }}.iiii</span>
         <button @click="removeItem(item)">X</button>
       </li>
     </ul>
@@ -27,16 +29,16 @@ export default {
       header: "April 2022 Shopping",
       newItem: '',
       items: [
-        {id:id++, name: 'Maize Flour',completed: false},
-        {id:id++, name: 'Nduma', completed: false},
-        {id:id++, name: 'New Laptop', completed: false},
-        {id:id++, name: 'Baby Cloths', completed:false},
+        {id:id++, name: 'Maize Flour',happy: false},
+        {id:id++, name: 'Nduma', happy: false},
+        {id:id++, name: 'New Laptop', happy: false},
+        {id:id++, name: 'Baby Cloths', happy:false},
       ]
     }
   },
   methods: {
     addItem(){
-      this.items.push({id: id++, name: this.newItem})
+      this.items.push({id: id++, name: this.newItem, happy: true})
       this.newItem=''
     },
     removeItem(item){
