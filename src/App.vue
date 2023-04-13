@@ -2,9 +2,10 @@
   <div>
     <h2>{{ header || 'Welcome' }}</h2>
     <div>
-      <input type="text" placeholder="Add Item">
-      <button>Submit</button>
+      <input type="text" placeholder="Add Item" v-model="newItem">
+      <button @click="addItem">Submit</button>
     </div>
+    {{ newItem }}
     <div v-for="item in items" :key="item.id">
       {{ item.name }}
     </div>
@@ -20,6 +21,7 @@ export default {
   data(){
     return {
       header: "April 2022 Shopping",
+      newItem: '',
       items: [
         {id:id++, name: 'Maize Flour'},
         {id:id++, name: 'Nduma'},
@@ -27,6 +29,12 @@ export default {
         {id:id++, name: 'Baby Cloths'},
       ]
     }
+  },
+  methods: {
+    addItem(){
+      this.items.push({id: id++, name: this.newItem})
+      this.newItem=''
+    },
   }
 }
 </script>
