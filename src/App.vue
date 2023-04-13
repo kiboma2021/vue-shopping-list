@@ -5,9 +5,13 @@
       <input type="text" placeholder="Add Item" v-model="newItem">
       <button @click="addItem">Submit</button>
     </div>
-    <div>New item <span style="color:red"> {{ newItem }} </span></div>
+    <div><span style="color:red"> {{ newItem }} </span></div>
     <ul v-for="item in items" :key="item.id">
-      <li>{{ item.name }}</li>
+      <li>
+        <input type="checkbox" >
+        {{ item.name }}
+        <button>X</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -22,11 +26,12 @@ export default {
     return {
       header: "April 2022 Shopping",
       newItem: '',
+      completedItem: false,
       items: [
-        {id:id++, name: 'Maize Flour'},
-        {id:id++, name: 'Nduma'},
-        {id:id++, name: 'New Laptop'},
-        {id:id++, name: 'Baby Cloths'},
+        {id:id++, name: 'Maize Flour',completed: false},
+        {id:id++, name: 'Nduma', completed: false},
+        {id:id++, name: 'New Laptop', completed: false},
+        {id:id++, name: 'Baby Cloths', completed:false},
       ]
     }
   },
