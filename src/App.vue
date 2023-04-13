@@ -5,10 +5,10 @@
       <input type="text" placeholder="Add Item" v-model="newItem">
       <button @click="addItem">Submit</button>
     </div>
-    {{ newItem }}
-    <div v-for="item in items" :key="item.id">
-      {{ item.name }}
-    </div>
+    <div>New item <span style="color:red"> {{ newItem }} </span></div>
+    <ul v-for="item in items" :key="item.id">
+      <li>{{ item.name }}</li>
+    </ul>
   </div>
 </template>
 
