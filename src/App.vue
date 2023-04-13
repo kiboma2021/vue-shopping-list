@@ -10,7 +10,7 @@
       <li>
         <input type="checkbox" >
         {{ item.name }}
-        <button>X</button>
+        <button @click="removeItem(item)">X</button>
       </li>
     </ul>
   </div>
@@ -39,6 +39,9 @@ export default {
     addItem(){
       this.items.push({id: id++, name: this.newItem})
       this.newItem=''
+    },
+    removeItem(item){
+      this.items=this.items.filter((t) => t != item)
     },
   }
 }
